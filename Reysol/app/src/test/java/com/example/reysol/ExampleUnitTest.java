@@ -1,4 +1,4 @@
-package com.example.reisol;
+package com.example.reysol;
 
 import org.junit.Test;
 

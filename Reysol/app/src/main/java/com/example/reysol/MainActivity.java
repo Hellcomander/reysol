@@ -1,4 +1,4 @@
-package com.example.reisol;
+package com.example.reysol;
 
 import androidx.appcompat.app.AppCompatActivity;
 

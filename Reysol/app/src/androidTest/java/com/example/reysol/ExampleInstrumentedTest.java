@@ -1,4 +1,4 @@
-package com.example.reisol;
+package com.example.reysol;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.reisol", appContext.getPackageName());
+        assertEquals("com.example.reysol", appContext.getPackageName());
     }
 }
