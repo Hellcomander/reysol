@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.Reysol" parent="Base.Theme.Reysol" />
+    <style name="SplashTheme" parent="Theme.Reysol">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 </resources>
