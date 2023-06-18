@@ -66,6 +66,7 @@ public class MainViewActivity extends AppCompatActivity {
                 } else if(id == R.id.mCerrar){
                     usuarios.destroySession();
                     finish();
+                    return true;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.framecontainer,temp).commit();
                 return true;
