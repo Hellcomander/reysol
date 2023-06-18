@@ -7,8 +7,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.reysol.Fragments.ProductsFragment;
 import com.example.reysol.Models.UsuariosModel;
@@ -40,6 +45,10 @@ public class MainViewActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
 
         navigationView.bringToFront();
+        if(false)
+            navigationView.inflateMenu(R.menu.drawer_menu_admin);
+        else
+            navigationView.inflateMenu(R.menu.drawer_menu);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -62,6 +71,17 @@ public class MainViewActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        if(false)
+            inflater.inflate(R.menu.drawer_menu_admin, menu);
+        else
+            inflater.inflate(R.menu.drawer_menu_admin, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     @Override

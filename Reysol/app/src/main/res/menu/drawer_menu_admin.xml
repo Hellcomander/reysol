@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/mProductos"
+        android:title="Productos" />
+
+    <item android:id="@+id/mCarrito"
+        android:title="Carrito" />
+
+    <item android:id="@+id/mAgregarProductos"
+        android:title="Agregar Productos" />
+
+    <item android:id="@+id/AgregarPaqueterias"
+        android:title="Agregar Paqueterias" />
+
+    <item android:id="@+id/AgregarAdministradores"
+        android:title="Agregar Administradores" />
+
+    <item android:id="@+id/mCerrar"
+        android:title="Cerrar Sesion" />
+</menu>
