@@ -111,6 +111,11 @@ public class UsuariosModel {
         return sharedPreferences.contains("nombre_usuario");
     }
 
+    public void destroySession(){
+        editor.clear();
+        editor.apply();
+    }
+
     public void rellenar(){
         String json = sharedPreferences.getString("clientes", "");
         try {

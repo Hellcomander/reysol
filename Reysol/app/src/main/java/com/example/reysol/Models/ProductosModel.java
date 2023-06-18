@@ -53,6 +53,7 @@ public class ProductosModel {
 
     public void rellenar() {
         String json = sharedPreferences.getString("productos", "");
+        Log.e("PRODUCTOS ACTUALES", json);
         try {
             JSONArray jsonArray = new JSONArray(json);
             for (int i = 0; i < jsonArray.length(); i++) {

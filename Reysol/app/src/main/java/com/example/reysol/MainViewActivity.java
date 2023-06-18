@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.reysol.Fragments.ProductsFragment;
+import com.example.reysol.Models.UsuariosModel;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainViewActivity extends AppCompatActivity {
@@ -18,12 +19,14 @@ public class MainViewActivity extends AppCompatActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
+    UsuariosModel usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view);
 
+        usuarios = new UsuariosModel(getApplicationContext());
         toolbar = findViewById(R.id.toolbarMap);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
@@ -51,6 +54,9 @@ public class MainViewActivity extends AppCompatActivity {
                     i = new Intent(getApplicationContext(), AddProducts.class);
                     startActivity(i);
                     return true;
+                } else if(id == R.id.mCerrar){
+                    usuarios.destroySession();
+                    finish();
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.framecontainer,temp).commit();
                 return true;

@@ -6,4 +6,7 @@
 
     <item android:id="@+id/mAgregarProductos"
         android:title="Agregar Productos" />
+
+    <item android:id="@+id/mCerrar"
+        android:title="Cerrar Sesion" />
 </menu>
