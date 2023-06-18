@@ -2,32 +2,35 @@ package com.example.reysol;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.reysol.Classes.Clientes;
 import com.example.reysol.Classes.Usuarios;
+import com.example.reysol.Models.UsuariosModel;
 
 public class LoginActivity extends AppCompatActivity {
     EditText txtEmail, txtPassword;
     Button btnLogin;
-    Usuarios usuarios[];
-    Clientes clientes[];
+    TextView btnSign;
+    UsuariosModel usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usuarios = new Usuarios[50];
-        clientes = new Clientes[50];
+        usuarios = new UsuariosModel(getApplicationContext());
 
         txtEmail = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnSign = (TextView) findViewById(R.id.btnSign);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +42,29 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "INGRESA TODOS LOS DATOS", Toast.LENGTH_LONG).show();
                     return;
                 }
+
+                if (!usuarios.login(email, password)){
+                    Toast.makeText(getApplicationContext(), "CREDENCIALES INCORRECTAS", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                Intent i = new Intent(getApplicationContext(), MainViewActivity.class);
+                startActivity(i);
             }
         });
+
+        btnSign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SignUpClientsActivity.class);
+                startActivity(i);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        usuarios = new UsuariosModel(getApplicationContext());
     }
 }
