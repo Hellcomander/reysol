@@ -55,7 +55,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
             moreInfo.setText(producto.getDescripcion());
             showPeso.setText("Peso: " + producto.getPeso());
             showMedidas.setText("Medidas: " + producto.getMedidas());
-            Picasso.get().load(producto.getUrlImagen()).into(img);
+            Picasso.get().load(producto.getUrlImagen()).error(R.drawable.app_logo).into(img);
 
             btnAddCar.setOnClickListener(v -> {
                     comprasModel.agregar(producto.getId(), usuariosModel.getIdUser(), carritoModel.obtenerCarrito(usuariosModel.getIdUser()), "", producto.getPrecio(), producto.getId(), 1 );

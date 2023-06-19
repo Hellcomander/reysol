@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.reysol.Classes.Carrito;
 import com.example.reysol.Classes.Compras;
@@ -34,8 +35,9 @@ public class CarritoModel {
 
     public int obtenerCarrito(int id_usuario){
         for(int i = 0; i < cant; i++){
+            Toast.makeText(context.getApplicationContext(), String.valueOf(carrito[i].isFinalizado()), Toast.LENGTH_LONG);
             if(carrito[i].getIdUsuario() == id_usuario){
-                if(carrito[i].isFinalizado()) continue;
+                if(!carrito[i].isFinalizado())
                 return carrito[i].getId();
             }
         }

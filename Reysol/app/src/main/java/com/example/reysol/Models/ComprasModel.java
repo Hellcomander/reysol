@@ -60,7 +60,7 @@ public class ComprasModel {
         ArrayList<String> compras = new ArrayList<>();
         String nombre = "";
         for (int i = 0; i < cant; i++){
-            if(compra[i].getIdCarrito() == id_carrito){
+            if(compra[i].getIdCarrito() == id_carrito ){
                 nombre = productosModel.ObtenerNombre(compra[i].getIdProducto());
                 compras.add(nombre + " x" + compra[i].getCantidad() + " $" + compra[i].getTotal());
             }
