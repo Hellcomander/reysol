@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         btnRegister.setOnClickListener(v -> {
-            Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+            Intent i = new Intent(getApplicationContext(), SignUpClientsActivity.class);
             startActivity(i);
         });
 

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 public class SignUpClientsActivity extends AppCompatActivity {
     private EditText txtName, txtEmail, txtPassword, txtAge, txtPhone, txtAddress, txtCp, txtRfc;
-    private Button btnSign;
+    public Button btnSign;
     UsuariosModel usuarios;
 
     @Override
@@ -35,30 +35,26 @@ public class SignUpClientsActivity extends AppCompatActivity {
         txtRfc = (EditText) findViewById(R.id.txtRFC);
         btnSign = (Button) findViewById(R.id.btnAddUser);
 
-        btnSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Register button", Toast.LENGTH_LONG).show();
-                if(txtName.equals("") || txtEmail.equals("") || txtPassword.equals("") || txtAge.equals("")
-                || txtPhone.equals("") || txtAddress.equals("") || txtCp.equals("") || txtRfc.equals("")){
-                    Toast.makeText(getApplicationContext(), "INGRESA TODOS LOS DATOS", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                usuarios.agregarCliente(
-                        txtName.getText().toString(),
-                        txtEmail.getText().toString(),
-                        txtPassword.getText().toString(),
-                        Integer.parseInt(txtAge.getText().toString()),
-                        txtPhone.getText().toString(),
-                        txtAddress.getText().toString(),
-                        txtCp.getText().toString(),
-                        txtRfc.getText().toString(),
-                        2,
-                        true
-                );
-                Toast.makeText(getApplicationContext(), "REGISTRADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
-                limpiar();
+        btnSign.setOnClickListener(v -> {
+            if(txtName.equals("") || txtEmail.equals("") || txtPassword.equals("") || txtAge.equals("")
+                    || txtPhone.equals("") || txtAddress.equals("") || txtCp.equals("") || txtRfc.equals("")){
+                Toast.makeText(getApplicationContext(), "INGRESA TODOS LOS DATOS", Toast.LENGTH_SHORT).show();
+                return;
             }
+            usuarios.agregarCliente(
+                    txtName.getText().toString(),
+                    txtEmail.getText().toString(),
+                    txtPassword.getText().toString(),
+                    Integer.parseInt(txtAge.getText().toString()),
+                    txtPhone.getText().toString(),
+                    txtAddress.getText().toString(),
+                    txtCp.getText().toString(),
+                    txtRfc.getText().toString(),
+                    2,
+                    true
+            );
+            Toast.makeText(getApplicationContext(), "REGISTRADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+            limpiar();
         });
     }
 
