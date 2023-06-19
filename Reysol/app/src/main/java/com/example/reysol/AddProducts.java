@@ -15,7 +15,7 @@ import com.example.reysol.Models.ProductosModel;
 public class AddProducts extends AppCompatActivity {
     EditText txtId, txtName, txtDescription, txtPrice, txtWeight, txtSizes, txtAddress, txtUrl, txtSearch;
     Button btnSearch, btnUpdate, btnDelete, btnAdd;
-    ProductosModel productos;
+    public ProductosModel productos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.opengl.Visibility;
@@ -18,8 +20,11 @@ import android.widget.LinearLayout;
 
 import com.example.reysol.Fragments.CartFragment;
 import com.example.reysol.Fragments.ProductsFragment;
+import com.example.reysol.Models.ProductosModel;
 import com.example.reysol.Models.UsuariosModel;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class MainViewActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -28,11 +33,19 @@ public class MainViewActivity extends AppCompatActivity {
     NavigationView navigationView;
     UsuariosModel usuarios;
 
+    ArrayList<ProductosModel> productosList;
+    RecyclerView productList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view);
 
+        productList = (RecyclerView) findViewById(R.id.productList);
+        productList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        productosList = new ArrayList<ProductosModel>();
+        // Aqui es donde ocupo rescatar los productos
         usuarios = new UsuariosModel(getApplicationContext());
         toolbar = findViewById(R.id.toolbarMap);
         drawerLayout = findViewById(R.id.drawer);
