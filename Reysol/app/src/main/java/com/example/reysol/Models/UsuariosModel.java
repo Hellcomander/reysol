@@ -175,7 +175,7 @@ public class UsuariosModel {
         return null;
     }
 
-    public boolean actualizar(int id, String nombre, String correo, String password,){
+    public boolean actualizar(int id, String nombre, String correo, String password){
         for (int i = 0; i < cant_u; i++){
             if(usuario[i].getId() == id){
                 usuario[i].setId(id);
@@ -203,7 +203,12 @@ public class UsuariosModel {
                 encontrado = true;
                 continue;
             }
-            //temp[c].setId(usuario[i].setId());
+            temp[c].setId(usuario[i].getId());
+            temp[c].setPassword(usuario[i].getPassword());
+            temp[c].setCorreo(usuario[i].getCorreo());
+            temp[c].setNombre(usuario[i].getNombre());
+            temp[c].setAutorizado(usuario[i].isAutorizado());
+            temp[c].setNivel(usuario[i].getNivel());
             c++;
         }
     }
