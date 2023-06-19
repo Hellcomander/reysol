@@ -88,7 +88,7 @@ public class CartFragment extends Fragment {
             }
         });
 
-        ArrayList<String> com = comprasModel.obtenerCompras(usuariosModel.getIdUser());
+        ArrayList<String> com = comprasModel.obtenerCompras(carritoModel.obtenerCarrito(usuariosModel.getIdUser()));
 
         for (String c : com){
             sales.setText(sales.getText() + "\n" + c);
