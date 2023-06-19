@@ -61,17 +61,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/secondary"
-            android:text="No tienes una cuenta?"/>
+            android:text="¿No tienes una cuenta?"/>
 
         <TextView
-            android:id="@+id/btnSign"
+            android:id="@+id/btnRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:layout_marginLeft="3dp"
             android:textColor="@color/primary"
-            android:clickable="true"
-            android:text="Registrarse"/>
+            android:text="Registrate aqui"/>
 
     </LinearLayout>
 
