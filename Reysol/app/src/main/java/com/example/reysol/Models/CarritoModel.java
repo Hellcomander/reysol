@@ -34,7 +34,8 @@ public class CarritoModel {
 
     public int obtenerCarrito(int id_usuario){
         for(int i = 0; i < cant; i++){
-            if(carrito[i].getIdUsuario() == id_usuario && !carrito[i].isFinalizado()){
+            if(carrito[i].getIdUsuario() == id_usuario){
+                if(carrito[i].isFinalizado()) continue;
                 return carrito[i].getId();
             }
         }
@@ -63,10 +64,12 @@ public class CarritoModel {
 
     public void finalizar(int id_carrito, String paqueteria){
         for(int i = 0; i < cant; i++){
-            if(carrito[i].getId() == id_carrito){
-                carrito[i].setIdPaqueteria(paqueteria);
-                carrito[i].setFinalizado(true);
-            }
+            carrito[i].setIdPaqueteria(paqueteria);
+            carrito[i].setFinalizado(true);
+            //if(carrito[i].getId() == id_carrito){
+            //    carrito[i].setIdPaqueteria(paqueteria);
+             //   carrito[i].setFinalizado(true);
+            //}
         }
     }
 

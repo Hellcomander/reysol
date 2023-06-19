@@ -56,10 +56,11 @@ public class UsuariosModel {
 
     public void agregarCliente(String nombre, String correo, String password, int edad, String telefono, String direccion, String cp, String rfc, int nivel, boolean autorizado){
         cliente[cant_c] = new Clientes();
+        int id = (int)(Math.random()*10000000+1);
         cliente[cant_c].setNombre(nombre);
         cliente[cant_c].setCorreo(correo);
         cliente[cant_c].setPassword(password);
-        cliente[cant_c].setId(cant_c);
+        cliente[cant_c].setId(id);
         cliente[cant_c].setNivel(nivel);
         cliente[cant_c].setAutorizado(autorizado);
         cliente[cant_c].setEdad(edad);

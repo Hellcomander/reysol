@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class CartFragment extends Fragment {
     UsuariosModel usuariosModel;
     TextView sales;
     Button btnAdd;
+    EditText txtAddress;
 
     public CartFragment() {
 
@@ -73,6 +75,7 @@ public class CartFragment extends Fragment {
         usuariosModel = new UsuariosModel(getContext());
         spinner = view.findViewById(R.id.spinner);
         sales = view.findViewById(R.id.sales);
+        txtAddress = view.findViewById(R.id.txtAddress);
         ArrayAdapter<CharSequence> adapter;
         adapter = new ArrayAdapter<CharSequence>(getContext(), android.R.layout.simple_spinner_dropdown_item, paqueteria.obtenerPaqueterias());
         adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
@@ -85,6 +88,9 @@ public class CartFragment extends Fragment {
                 int cart = carritoModel.obtenerCarrito(usuariosModel.getIdUser());
                 Toast.makeText(getActivity(), ""+cart, Toast.LENGTH_SHORT).show();
                 carritoModel.finalizar(cart, spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString());
+                Toast.makeText(getActivity(), "COMPRA REALIZADA", Toast.LENGTH_SHORT).show();
+                sales.setText("");
+                txtAddress.setText("");
             }
         });
 
