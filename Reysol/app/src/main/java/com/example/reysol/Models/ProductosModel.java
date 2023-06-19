@@ -14,6 +14,8 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class ProductosModel {
     Context context;
     Gson gson;
@@ -32,8 +34,12 @@ public class ProductosModel {
         this.rellenar();
     }
 
-    public Productos[] listar(){
-        return producto;
+    public ArrayList<Productos> listar(){
+        ArrayList<Productos> productos = new ArrayList<>();
+        for(int i = 0; i < cant; i++){
+            productos.add(producto[i]);
+        }
+        return productos;
     }
 
     public void agregar(int id, String nombre, String descripcion, double precio, double peso, String medidas, String url){

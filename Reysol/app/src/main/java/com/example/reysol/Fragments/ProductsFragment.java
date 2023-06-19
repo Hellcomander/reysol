@@ -65,10 +65,9 @@ public class ProductsFragment extends Fragment {
         productList = (RecyclerView) view.findViewById(R.id.productList);
         productList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-        productosList = new ArrayList<Productos>();
-
         productosModel = new ProductosModel(getContext());
-        productosList.addAll(Arrays.asList(productosModel.listar()));
+        productosList = productosModel.listar();
+        //productosList.addAll(productosList.);
 
         AdapterDatos adapterDatos = new AdapterDatos(productosList);
         productList.setAdapter(adapterDatos);
