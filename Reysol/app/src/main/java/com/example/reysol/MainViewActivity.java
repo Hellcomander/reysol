@@ -33,18 +33,14 @@ public class MainViewActivity extends AppCompatActivity {
     NavigationView navigationView;
     UsuariosModel usuarios;
 
-    ArrayList<ProductosModel> productosList;
-    RecyclerView productList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view);
 
-        productList = (RecyclerView) findViewById(R.id.productList);
-        productList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        productosList = new ArrayList<ProductosModel>();
         // Aqui es donde ocupo rescatar los productos
         usuarios = new UsuariosModel(getApplicationContext());
         toolbar = findViewById(R.id.toolbarMap);
