@@ -64,13 +64,20 @@ public class CarritoModel {
 
     public void finalizar(int id_carrito, String paqueteria){
         for(int i = 0; i < cant; i++){
-            carrito[i].setIdPaqueteria(paqueteria);
-            carrito[i].setFinalizado(true);
-            //if(carrito[i].getId() == id_carrito){
-            //    carrito[i].setIdPaqueteria(paqueteria);
-             //   carrito[i].setFinalizado(true);
-            //}
+            //carrito[i].setIdPaqueteria(paqueteria);
+            //carrito[i].setFinalizado(true);
+            if(carrito[i].getId() == id_carrito){
+                carrito[i].setIdPaqueteria(paqueteria);
+                carrito[i].setFinalizado(true);
+            }
         }
+
+        String json = gson.toJson(carrito);
+
+        Log.e("CARRITO", json);
+
+        editor.putString("carritos", json);
+        editor.apply();
     }
 
     public void rellenar() {
