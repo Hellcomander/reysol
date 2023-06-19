@@ -9,15 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.reysol.Classes.Productos;
 import com.example.reysol.Models.ProductosModel;
 
 import java.util.ArrayList;
 
 public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> {
 
-    ArrayList<ProductosModel> productosList;
+    ArrayList<Productos> productosList;
 
-    public AdapterDatos(ArrayList<ProductosModel> productosList) {
+    public AdapterDatos(ArrayList<Productos> productosList) {
         this.productosList = productosList;
     }
 
@@ -28,8 +29,8 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
             productTitle = (TextView) itemView.findViewById(R.id.productTitle);
         }
 
-        public void asignarDatos(ProductosModel productosModel, int position) {
-            productTitle.setText(productosModel.ObtenerNombre(position));
+        public void asignarDatos(Productos producto) {
+            productTitle.setText(producto.getNombre());
         }
     }
     @NonNull
@@ -41,7 +42,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
 
     @Override
     public void onBindViewHolder(@NonNull AdapterDatos.ViewHolderDatos holder, int position) {
-        holder.asignarDatos(productosList.get(position), position);
+        holder.asignarDatos(productosList.get(position));
     }
 
     @Override

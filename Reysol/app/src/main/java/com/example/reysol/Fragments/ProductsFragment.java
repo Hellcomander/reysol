@@ -13,10 +13,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.reysol.AdapterDatos;
+import com.example.reysol.Classes.Productos;
 import com.example.reysol.Models.ProductosModel;
 import com.example.reysol.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ProductsFragment extends Fragment {
 
@@ -26,7 +29,7 @@ public class ProductsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    ArrayList<ProductosModel> productosList;
+    ArrayList<Productos> productosList;
     RecyclerView productList;
 
     ProductosModel productosModel;
@@ -62,9 +65,13 @@ public class ProductsFragment extends Fragment {
         productList = (RecyclerView) view.findViewById(R.id.productList);
         productList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-        productosList = new ArrayList<ProductosModel>();
+        productosList = new ArrayList<Productos>();
 
         productosModel = new ProductosModel(getContext());
+        productosList.addAll(Arrays.asList(productosModel.listar()));
+
+        AdapterDatos adapterDatos = new AdapterDatos(productosList);
+        productList.setAdapter(adapterDatos);
         return view;
     }
 
