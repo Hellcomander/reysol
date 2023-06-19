@@ -74,4 +74,15 @@ public class ProductsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        productosModel = new ProductosModel(getContext());
+        productosList = productosModel.listar();
+        //productosList.addAll(productosList.);
+
+        AdapterDatos adapterDatos = new AdapterDatos(productosList);
+        productList.setAdapter(adapterDatos);
+    }
+
 }
