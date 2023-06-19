@@ -10,10 +10,10 @@
     <item android:id="@+id/mAgregarProductos"
         android:title="Agregar Productos" />
 
-    <item android:id="@+id/AgregarPaqueterias"
+    <item android:id="@+id/mAgregarPaqueterias"
         android:title="Agregar Paqueterias" />
 
-    <item android:id="@+id/AgregarAdministradores"
+    <item android:id="@+id/mAgregarAdministradores"
         android:title="Agregar Administradores" />
 
     <item android:id="@+id/mCerrar"

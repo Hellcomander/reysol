@@ -138,7 +138,7 @@ public class UsuariosModel {
                 cant_c++;
             }
         } catch (Exception e){
-
+            Log.e("ERROR", e.getMessage());
         }
 
         String json2 = sharedPreferences.getString("usuarios", "");
@@ -156,7 +156,7 @@ public class UsuariosModel {
                 cant_u++;
             }
         } catch (Exception e){
-
+            Log.e("ERROR", e.getMessage());
         }
     }
 }

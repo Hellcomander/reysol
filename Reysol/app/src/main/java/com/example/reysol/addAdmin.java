@@ -10,46 +10,37 @@ import android.widget.Toast;
 
 import com.example.reysol.Models.UsuariosModel;
 
-public class SignUpClientsActivity extends AppCompatActivity {
-    private EditText txtName, txtEmail, txtPassword, txtAge, txtPhone, txtAddress, txtCp, txtRfc;
+public class addAdmin extends AppCompatActivity {
+    private EditText txtName, txtEmail, txtPassword, txtId;
     private Button btnSign;
     UsuariosModel usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_clients);
+        setContentView(R.layout.activity_add_admin);
 
         usuarios = new UsuariosModel(getApplicationContext());
 
         txtName = (EditText) findViewById(R.id.txtName);
         txtEmail = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
-        txtAge = (EditText) findViewById(R.id.txtAge);
-        txtPhone = (EditText) findViewById(R.id.txtPhone);
-        txtAddress = (EditText) findViewById(R.id.txtAddress);
-        txtCp = (EditText) findViewById(R.id.txtCp);
-        txtRfc = (EditText) findViewById(R.id.txtRfc);
+        txtId = (EditText) findViewById(R.id.txtId);
         btnSign = (Button) findViewById(R.id.btnSign);
 
         btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtName.equals("") || txtEmail.equals("") || txtPassword.equals("") || txtAge.equals("")
-                || txtPhone.equals("") || txtAddress.equals("") || txtCp.equals("") || txtRfc.equals("")){
+                if(txtName.equals("") || txtEmail.equals("") || txtPassword.equals("") || txtId.equals("")) {
                     Toast.makeText(getApplicationContext(), "INGRESA TODOS LOS DATOS", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                usuarios.agregarCliente(
+                usuarios.agregarUsuario(
+                        Integer.parseInt(txtId.getText().toString()),
                         txtName.getText().toString(),
                         txtEmail.getText().toString(),
                         txtPassword.getText().toString(),
-                        Integer.parseInt(txtAge.getText().toString()),
-                        txtPhone.getText().toString(),
-                        txtAddress.getText().toString(),
-                        txtCp.getText().toString(),
-                        txtRfc.getText().toString(),
-                        2,
+                        1,
                         true
                 );
                 Toast.makeText(getApplicationContext(), "REGISTRADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
@@ -59,13 +50,9 @@ public class SignUpClientsActivity extends AppCompatActivity {
     }
 
     public void limpiar(){
+        txtId.setText("");
         txtName.setText("");
         txtEmail.setText("");
         txtPassword.setText("");
-        txtAddress.setText("");
-        txtAge.setText("");
-        txtPhone.setText("");
-        txtCp.setText("");
-        txtRfc.setText("");
     }
 }

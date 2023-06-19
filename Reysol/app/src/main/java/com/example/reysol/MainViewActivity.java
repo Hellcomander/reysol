@@ -14,7 +14,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
+import com.example.reysol.Fragments.CartFragment;
 import com.example.reysol.Fragments.ProductsFragment;
 import com.example.reysol.Models.UsuariosModel;
 import com.google.android.material.navigation.NavigationView;
@@ -45,7 +47,7 @@ public class MainViewActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
 
         navigationView.bringToFront();
-        if(false)
+        if(true)
             navigationView.inflateMenu(R.menu.drawer_menu_admin);
         else
             navigationView.inflateMenu(R.menu.drawer_menu);
@@ -67,22 +69,23 @@ public class MainViewActivity extends AppCompatActivity {
                     usuarios.destroySession();
                     finish();
                     return true;
+                } else if(id == R.id.mAgregarAdministradores){
+                    i = new Intent(getApplicationContext(), addAdmin.class);
+                    startActivity(i);
+                    return true;
+                }
+                else if(id == R.id.mCarrito){
+                    temp = new CartFragment();
+                } else if(id == R.id.mAgregarPaqueterias){
+                    i = new Intent(getApplicationContext(), AddParcelActivity.class);
+                    startActivity(i);
+                    return true;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.framecontainer,temp).commit();
                 return true;
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        if(false)
-            inflater.inflate(R.menu.drawer_menu_admin, menu);
-        else
-            inflater.inflate(R.menu.drawer_menu_admin, menu);
-        super.onCreateOptionsMenu(menu);
-        return true;
+        getSupportFragmentManager().beginTransaction().replace(R.id.framecontainer,new ProductsFragment()).commit();
     }
 
     @Override

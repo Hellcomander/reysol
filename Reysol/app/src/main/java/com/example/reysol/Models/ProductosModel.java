@@ -70,7 +70,7 @@ public class ProductosModel {
                 cant++;
             }
         } catch (Exception e) {
-
+            Log.e("ERROR", e.getMessage());
         }
     }
 }
