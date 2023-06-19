@@ -79,7 +79,6 @@ public class ProductsFragment extends Fragment {
         super.onResume();
         productosModel = new ProductosModel(getContext());
         productosList = productosModel.listar();
-        //productosList.addAll(productosList.);
 
         AdapterDatos adapterDatos = new AdapterDatos(productosList);
         productList.setAdapter(adapterDatos);

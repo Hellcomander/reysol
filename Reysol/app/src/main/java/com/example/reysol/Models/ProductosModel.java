@@ -24,6 +24,8 @@ public class ProductosModel {
     SharedPreferences.Editor editor;
     Productos producto[];
 
+    ComprasModel comprasModel;
+
     public ProductosModel(Context context){
         this.context = context;
         gson = new Gson();
@@ -32,6 +34,7 @@ public class ProductosModel {
         cant = 0;
         producto = new Productos[20];
         this.rellenar();
+
     }
 
     public ArrayList<Productos> listar(){
