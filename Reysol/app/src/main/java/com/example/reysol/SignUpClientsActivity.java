@@ -3,12 +3,15 @@ package com.example.reysol;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.reysol.Models.UsuariosModel;
+
+import java.util.logging.Logger;
 
 public class SignUpClientsActivity extends AppCompatActivity {
     private EditText txtName, txtEmail, txtPassword, txtAge, txtPhone, txtAddress, txtCp, txtRfc;
@@ -28,13 +31,14 @@ public class SignUpClientsActivity extends AppCompatActivity {
         txtAge = (EditText) findViewById(R.id.txtAge);
         txtPhone = (EditText) findViewById(R.id.txtPhone);
         txtAddress = (EditText) findViewById(R.id.txtAddress);
-        txtCp = (EditText) findViewById(R.id.txtCp);
-        txtRfc = (EditText) findViewById(R.id.txtRfc);
-        btnSign = (Button) findViewById(R.id.btnSign);
+        txtCp = (EditText) findViewById(R.id.txtPC);
+        txtRfc = (EditText) findViewById(R.id.txtRFC);
+        btnSign = (Button) findViewById(R.id.btnAddUser);
 
         btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Register button", Toast.LENGTH_LONG).show();
                 if(txtName.equals("") || txtEmail.equals("") || txtPassword.equals("") || txtAge.equals("")
                 || txtPhone.equals("") || txtAddress.equals("") || txtCp.equals("") || txtRfc.equals("")){
                     Toast.makeText(getApplicationContext(), "INGRESA TODOS LOS DATOS", Toast.LENGTH_SHORT).show();

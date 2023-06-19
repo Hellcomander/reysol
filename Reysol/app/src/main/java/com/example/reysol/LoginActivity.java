@@ -17,7 +17,7 @@ import com.example.reysol.Models.UsuariosModel;
 public class LoginActivity extends AppCompatActivity {
     EditText txtEmail, txtPassword;
     Button btnLogin;
-    TextView btnSign;
+    TextView btnRegister;
     UsuariosModel usuarios;
 
     @Override
@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         txtEmail = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnSign = (TextView) findViewById(R.id.btnSign);
+        btnRegister = (TextView) findViewById(R.id.btnRegister);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,13 +53,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btnSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SignUpClientsActivity.class);
-                startActivity(i);
-            }
+        btnRegister.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+            startActivity(i);
         });
+
     }
 
     @Override
