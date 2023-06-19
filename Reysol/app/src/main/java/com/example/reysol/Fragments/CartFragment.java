@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.reysol.Models.CarritoModel;
 import com.example.reysol.Models.ComprasModel;
@@ -36,6 +38,7 @@ public class CartFragment extends Fragment {
     CarritoModel carritoModel;
     UsuariosModel usuariosModel;
     TextView sales;
+    Button btnAdd;
 
     public CartFragment() {
 
@@ -74,6 +77,16 @@ public class CartFragment extends Fragment {
         adapter = new ArrayAdapter<CharSequence>(getContext(), android.R.layout.simple_spinner_dropdown_item, paqueteria.obtenerPaqueterias());
         adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        btnAdd = view.findViewById(R.id.btnAdd);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int cart = carritoModel.obtenerCarrito(usuariosModel.getIdUser());
+                Toast.makeText(getActivity(), ""+cart, Toast.LENGTH_SHORT).show();
+                carritoModel.finalizar(cart, spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString());
+            }
+        });
 
         ArrayList<String> com = comprasModel.obtenerCompras(usuariosModel.getIdUser());
 
