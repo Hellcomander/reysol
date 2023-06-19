@@ -194,7 +194,7 @@ public class UsuariosModel {
         return false;
     }
 
-    public void eliminar(int id){
+    public boolean eliminar(int id){
         Usuarios temp[] = new Usuarios[20];
         boolean encontrado = false;
         int c = 0;
@@ -211,5 +211,15 @@ public class UsuariosModel {
             temp[c].setNivel(usuario[i].getNivel());
             c++;
         }
+        if(!encontrado) return false;
+        cant_u--;
+
+        String json = gson.toJson(usuario);
+
+        Log.e("USUARIOS", json);
+
+        editor.putString("usuarios", json);
+        editor.apply();
+        return true;
     }
 }

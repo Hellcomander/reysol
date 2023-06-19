@@ -57,7 +57,28 @@ public class addAdmin extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(txtSearch.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "INGRESA UN ID", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+                usuarios.actualizar(
+                        Integer.parseInt(txtId.getText().toString()),
+                        txtName.getText().toString(),
+                        txtEmail.getText().toString(),
+                        txtPassword.getText().toString()
+                );
+
+                Toast.makeText(getApplicationContext(), "ACTUALIZADO", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usuarios.eliminar(Integer.parseInt(txtId.getText().toString()));
+                Toast.makeText(getApplicationContext(), "BORRADO", Toast.LENGTH_SHORT).show();
+                limpiar();
             }
         });
 
