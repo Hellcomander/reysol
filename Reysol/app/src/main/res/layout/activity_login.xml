@@ -70,6 +70,7 @@
             android:textStyle="bold"
             android:layout_marginLeft="3dp"
             android:textColor="@color/primary"
+            android:clickable="true"
             android:text="Registrate aqui"/>
 
     </LinearLayout>
