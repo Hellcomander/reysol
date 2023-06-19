@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import com.example.reysol.Models.CarritoModel;
 import com.example.reysol.Models.ComprasModel;
 import com.example.reysol.Models.ProductosModel;
 import com.example.reysol.Models.UsuariosModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
         TextView productTitle, showPrice, moreInfo, showPeso, showMedidas;
         Button btnAddCar;
+        ImageView img;
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             productTitle = (TextView) itemView.findViewById(R.id.productTitle);
@@ -40,6 +43,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
             showPeso = (TextView) itemView.findViewById(R.id.showPeso);
             showMedidas = (TextView) itemView.findViewById(R.id.showMedidas);
             btnAddCar = (Button) itemView.findViewById(R.id.btnAddCar);
+            img = itemView.findViewById(R.id.img);
 
 
         }
@@ -51,7 +55,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
             moreInfo.setText(producto.getDescripcion());
             showPeso.setText("Peso: " + producto.getPeso());
             showMedidas.setText("Medidas: " + producto.getMedidas());
-
+            Picasso.get().load(producto.getUrlImagen()).into(img);
 
             btnAddCar.setOnClickListener(v -> {
                     comprasModel.agregar(producto.getId(), usuariosModel.getIdUser(), carritoModel.obtenerCarrito(usuariosModel.getIdUser()), "", producto.getPrecio(), producto.getId(), 1 );
