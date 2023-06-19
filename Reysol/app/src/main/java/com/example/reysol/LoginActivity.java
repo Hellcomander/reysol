@@ -47,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "INGRESA TODOS LOS DATOS", Toast.LENGTH_LONG).show();
                 return;
             }
+
+
         });
     }
 }
