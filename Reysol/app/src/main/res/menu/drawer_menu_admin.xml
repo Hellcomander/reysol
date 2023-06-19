@@ -2,20 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/mProductos"
+        android:icon="@drawable/ic_list"
         android:title="Productos" />
 
     <item android:id="@+id/mCarrito"
+        android:icon="@drawable/ic_cart"
         android:title="Carrito" />
 
     <item android:id="@+id/mAgregarProductos"
+        android:icon="@drawable/ic_add"
         android:title="Agregar Productos" />
 
     <item android:id="@+id/mAgregarPaqueterias"
+        android:icon="@drawable/ic_parcel"
         android:title="Agregar Paqueterias" />
 
     <item android:id="@+id/mAgregarAdministradores"
+        android:icon="@drawable/ic_person_add"
         android:title="Agregar Administradores" />
 
     <item android:id="@+id/mCerrar"
+        android:icon="@drawable/ic_logout"
         android:title="Cerrar Sesion" />
 </menu>

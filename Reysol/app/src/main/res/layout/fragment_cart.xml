@@ -25,6 +25,7 @@
                 android:text="DETALLES DE LA COMPRA"/>
 
             <TextView
+                android:id="@+id/sales"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

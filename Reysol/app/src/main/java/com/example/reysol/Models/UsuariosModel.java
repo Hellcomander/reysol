@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.reysol.Classes.Clientes;
+import com.example.reysol.Classes.Paqueterias;
 import com.example.reysol.Classes.Usuarios;
 import com.google.gson.Gson;
 
@@ -111,9 +112,16 @@ public class UsuariosModel {
         return sharedPreferences.contains("nombre_usuario");
     }
 
+    public int getLevel(){
+        return sharedPreferences.getInt("nivel", 0);
+    }
+
+    public int getIdUser(){
+        return sharedPreferences.getInt("id", 0);
+    }
     public void destroySession(){
-        editor.clear();
-        editor.apply();
+        editor.remove("nombre_usuario");
+        editor.commit();
     }
 
     public void rellenar(){
@@ -157,6 +165,46 @@ public class UsuariosModel {
             }
         } catch (Exception e){
             Log.e("ERROR", e.getMessage());
+        }
+    }
+
+    public Usuarios buscar(int id){
+        for (int i = 0; i < cant_u; i++){
+            if(usuario[i].getId() == id) return usuario[i];
+        }
+        return null;
+    }
+
+    public boolean actualizar(int id, String nombre, String correo, String password,){
+        for (int i = 0; i < cant_u; i++){
+            if(usuario[i].getId() == id){
+                usuario[i].setId(id);
+                usuario[i].setNombre(nombre);
+                usuario[i].setCorreo(correo);
+                usuario[i].setPassword(password);
+                String json = gson.toJson(usuario);
+
+                Log.e("USUARIOS", json);
+
+                editor.putString("usuarios", json);
+                editor.apply();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void eliminar(int id){
+        Usuarios temp[] = new Usuarios[20];
+        boolean encontrado = false;
+        int c = 0;
+        for (int i = 0; i < cant_u; i ++){
+            if(usuario[i].getId() == id){
+                encontrado = true;
+                continue;
+            }
+            //temp[c].setId(usuario[i].setId());
+            c++;
         }
     }
 }

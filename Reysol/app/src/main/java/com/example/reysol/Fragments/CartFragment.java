@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.example.reysol.Models.CarritoModel;
+import com.example.reysol.Models.ComprasModel;
 import com.example.reysol.Models.PaqueteriasModel;
+import com.example.reysol.Models.UsuariosModel;
 import com.example.reysol.R;
 
 import java.util.ArrayList;
@@ -28,6 +32,10 @@ public class CartFragment extends Fragment {
 
     Spinner spinner;
     PaqueteriasModel paqueteria;
+    ComprasModel comprasModel;
+    CarritoModel carritoModel;
+    UsuariosModel usuariosModel;
+    TextView sales;
 
     public CartFragment() {
 
@@ -56,12 +64,22 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
+        comprasModel = new ComprasModel(getContext());
         paqueteria = new PaqueteriasModel(getContext());
+        carritoModel = new CarritoModel(getContext());
+        usuariosModel = new UsuariosModel(getContext());
         spinner = view.findViewById(R.id.spinner);
+        sales = view.findViewById(R.id.sales);
         ArrayAdapter<CharSequence> adapter;
         adapter = new ArrayAdapter<CharSequence>(getContext(), android.R.layout.simple_spinner_dropdown_item, paqueteria.obtenerPaqueterias());
         adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        ArrayList<String> com = comprasModel.obtenerCompras(usuariosModel.getIdUser());
+
+        for (String c : com){
+            sales.setText(sales.getText() + "\n" + c);
+        }
         return view;
     }
 }

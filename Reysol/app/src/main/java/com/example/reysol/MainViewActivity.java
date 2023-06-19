@@ -47,10 +47,10 @@ public class MainViewActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
 
         navigationView.bringToFront();
-        if(true)
+        if(usuarios.getLevel() == 1)
             navigationView.inflateMenu(R.menu.drawer_menu_admin);
         else
-            navigationView.inflateMenu(R.menu.drawer_menu);
+            navigationView.inflateMenu(R.menu.drawer_menu_admin);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {

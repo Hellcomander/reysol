@@ -6,6 +6,24 @@ public class Compras {
     private int idCarrito;
     private String direccionEntrega;
     private double total;
+    private int idProducto;
+    private int cantidad;
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
 
     public int getId() {
         return id;

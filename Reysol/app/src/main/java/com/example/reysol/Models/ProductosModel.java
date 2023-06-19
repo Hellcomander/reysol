@@ -73,4 +73,71 @@ public class ProductosModel {
             Log.e("ERROR", e.getMessage());
         }
     }
+
+    public String ObtenerNombre(int id_producto){
+        for (int i = 0; i < cant; i++){
+            if(producto[i].getId() == id_producto) return producto[i].getNombre();
+        }
+        return "";
+    }
+
+    public Productos buscar(int id){
+        for(int i = 0; i < cant; i++){
+            if(producto[i].getId() == id) return producto[i];
+        }
+        return null;
+    }
+
+    public boolean eliminar(int id){
+        boolean encontrado = false;
+        int c = 0;
+        Productos temp[] = new Productos[20];
+        for(int i = 0; i < cant; i++){
+            if(producto[i].getId() == id){
+                encontrado = true;
+                continue;
+            }
+            temp[c].setNombre(producto[i].getNombre());
+            temp[c].setId(producto[i].getId());
+            temp[c].setDescripcion(producto[i].getDescripcion());
+            temp[c].setMedidas(producto[i].getMedidas());
+            temp[c].setPeso(producto[i].getPeso());
+            temp[c].setPrecio(producto[i].getPrecio());
+            temp[c].setUrlImagen(producto[i].getUrlImagen());
+        }
+
+        if(!encontrado) return false;
+        cant--;
+        producto = temp;
+
+        String json = gson.toJson(producto);
+
+        Log.e("PRODUCTOS", json);
+
+        editor.putString("productos", json);
+        editor.apply();
+        return true;
+    }
+
+    public boolean actualizar(int id, String nombre, String descripcion, double precio, double peso, String medidas, String url){
+        for(int i = 0; i < cant; i++){
+            if(producto[i].getId() == id){
+                producto[i].setId(id);
+                producto[i].setNombre(nombre);
+                producto[i].setDescripcion(descripcion);
+                producto[i].setPeso(peso);
+                producto[i].setPrecio(precio);
+                producto[i].setMedidas(medidas);
+                producto[i].setUrlImagen(url);
+                String json = gson.toJson(producto);
+
+                Log.e("PRODUCTOS", json);
+
+                editor.putString("productos", json);
+                editor.apply();
+                return true;
+            }
+        }
+        return false;
+    }
 }

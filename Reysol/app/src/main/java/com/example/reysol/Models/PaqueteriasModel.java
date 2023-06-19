@@ -80,4 +80,64 @@ public class PaqueteriasModel {
             Log.e("ERROR", e.getMessage());
         }
     }
+
+    public boolean borrar(int id){
+        Paqueterias temp[] = new Paqueterias[20];
+        boolean encontrado = false;
+        int c = 0;
+        for (int i = 0; i < cant; i++){
+            if(paqueteria[i].getId() == id) {
+                encontrado = true;
+                continue;
+            }
+            temp[c] = new Paqueterias();
+            temp[c].setId(paqueteria[i].getId());
+            temp[c].setDireccion(paqueteria[i].getDireccion());
+            temp[c].setNombre(paqueteria[i].getNombre());
+            temp[c].setNumeroContacto(paqueteria[i].getNumeroContacto());
+            temp[c].setHorarioEntrega(paqueteria[i].getHorarioEntrega());
+            c++;
+        }
+        if(!encontrado) return encontrado;
+        cant--;
+        paqueteria = temp;
+
+        String json = gson.toJson(paqueteria);
+
+        Log.e("PAQUETERIAS", json);
+
+        editor.putString("paqueterias", json);
+        editor.apply();
+        return encontrado;
+    }
+
+    public boolean actualizar(int id, String nombre, String direccion, String numero, String horario){
+        for(int i = 0; i < cant; i++){
+            if(paqueteria[i].getId() == id){
+                paqueteria[i].setId(id);
+                paqueteria[i].setNombre(nombre);
+                paqueteria[i].setDireccion(direccion);
+                paqueteria[i].setNumeroContacto(numero);
+                paqueteria[i].setHorarioEntrega(horario);
+
+                String json = gson.toJson(paqueteria);
+
+                Log.e("PAQUETERIAS", json);
+
+                editor.putString("paqueterias", json);
+                editor.apply();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Paqueterias buscar(int id){
+        for(int i = 0; i < cant; i++){
+            if(paqueteria[i].getId() == id){
+                return paqueteria[i];
+            }
+        }
+        return null;
+    }
 }
