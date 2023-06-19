@@ -71,8 +71,9 @@ public class CarritoModel {
     }
 
     public void rellenar() {
-        String json = sharedPreferences.getString("compras", "");
-        Log.e("COMPRAS ACTUALES", json);
+        Log.e("XD", "XD");
+        String json = sharedPreferences.getString("carritos", "");
+        Log.e("CARRITOS ACTUALES", json);
         try {
             JSONArray jsonArray = new JSONArray(json);
             for (int i = 0; i < jsonArray.length(); i++) {

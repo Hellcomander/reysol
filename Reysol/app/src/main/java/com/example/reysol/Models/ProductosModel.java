@@ -32,6 +32,10 @@ public class ProductosModel {
         this.rellenar();
     }
 
+    public Productos[] listar(){
+        return producto;
+    }
+
     public void agregar(int id, String nombre, String descripcion, double precio, double peso, String medidas, String url){
         producto[cant] = new Productos();
         producto[cant].setId(id);

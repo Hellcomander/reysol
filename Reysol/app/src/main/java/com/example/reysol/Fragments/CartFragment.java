@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.reysol.Models.CarritoModel;
 import com.example.reysol.Models.ComprasModel;
@@ -82,6 +83,7 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int cart = carritoModel.obtenerCarrito(usuariosModel.getIdUser());
+                Toast.makeText(getActivity(), ""+cart, Toast.LENGTH_SHORT).show();
                 carritoModel.finalizar(cart, spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString());
             }
         });
